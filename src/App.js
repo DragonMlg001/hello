@@ -1,14 +1,18 @@
+import AddEmployee from "./Components/AddEmployee";
 import Employee from "./Components/Employee";
+import EditEmployee from "./Components/EditEmployee";
 import "./index.css";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
   console.log("we are lisint the employees");
+
   const showEmployees = true;
+  // eslint-disable-next-line
   const [role, setRole] = useState("no role");
 
-  const [emoloyees, setEmoloyees] = useState([
+  const [employee, setEmployees] = useState([
     {
       id: 1,
       name: "calub",
@@ -47,6 +51,30 @@ function App() {
     },
   ]);
 
+function updateEmployee(id , newName,newRole) {
+  console.log('update was pushed')
+  const updatedEmployees = employee.map((employee)=>{
+if (id === employee.id){
+  // return new emoloyees
+  return {...employee, name:newName , role: newRole};
+}
+return employee;
+  });
+  setEmployees(updatedEmployees)
+};
+
+function newEmployee(name , role , img){
+  const newEmployee = {
+    id: uuidv4,
+    name: name,
+    role: role,
+    img: img
+  }
+setEmployees([...employee, newEmployee])
+}
+
+
+
   return (
     <>
       {showEmployees ? (
@@ -60,15 +88,16 @@ function App() {
           />
           <div className="flex flex-wrap justify-center">
             {/* // the employee can be named anything */}
-            {emoloyees.map((employee) => {
-              console.log(employee);
+            {employee.map((employee) => {
+              const editEmployee = <EditEmployee id={employee.id} name={employee.name} role={employee.role} updateEmployee={updateEmployee} />
               return (
                 <Employee
-                  //key={employee.id}
-                  key={uuidv4()}
+                  key={employee.id}
+                  id={employee.id}
                   name={employee.name}
                   role={employee.role}
                   img={employee.img}
+                  editEmployee={editEmployee}
                 />
               );
             })}
@@ -77,6 +106,7 @@ function App() {
       ) : (
         <p>cant show man</p>
       )}
+      <AddEmployee newEmployee={newEmployee} />
     </>
   );
 }
