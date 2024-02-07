@@ -4,6 +4,7 @@ import EditEmployee from "./Components/EditEmployee";
 import "./index.css";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Header from "./Components/Header";
 
 function App() {
   console.log("we are lisint the employees");
@@ -77,6 +78,9 @@ setEmployees([...employee, newEmployee])
 
   return (
     <>
+    <Header/>
+
+
       {showEmployees ? (
         <div>
           <input
