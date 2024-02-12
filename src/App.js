@@ -1,5 +1,6 @@
 import Employees from "../src/Pages/Employees";
 import Header from "../src/Components/Header";
+import Dictionary from "../src/Components/Dictionary";
 import React from "react";
 import {
   BrowserRouter,
@@ -18,6 +19,7 @@ function App() {
    <Routes>
     <Route path="/" element={<Employees/>}/>
     <Route path="/customers" element={<Customers/>}/>
+    <Route path="/dictionary" element={<Dictionary/>}/>
    </Routes>
     </Header>
    </BrowserRouter>
