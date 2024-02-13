@@ -7,7 +7,7 @@ const navigation = [
   { name: 'Employees', href: '/' },
   { name: 'Customers', href: '/customers' },
   { name: 'Dictionary', href: 'dictionary' },
-  { name: 'Calendar', href: '/other2' },
+  //{ name: 'Definition', href: '/definition' },
 ]
 
 // function classNames(...classes) {
@@ -106,7 +106,7 @@ return ( 'block rounded-md px-3 py-2 text-base font-medium no-underline '+ (isAc
         </>
       )}
     </Disclosure>
-    <div className='bg-gray-400 min-h-screen p-2'>
+    <div className='bg-gray-400 min-h-screen p-4'>
     {props.children}
     </div>
     </>
